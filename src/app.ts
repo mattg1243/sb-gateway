@@ -20,7 +20,7 @@ app.use(cors({ credentials: true, origin: CLIENT_HOST }));
 // routes
 app.use(indexRouter);
 // microservice proxy routes
-app.use('/user', proxy(USER_HOST));
+app.use('/user', proxy(USER_HOST, { limit: '10mb' }));
 app.use('/auth', proxy(AUTH_HOST));
 app.use('/beats', proxy(BEAT_HOST, { limit: '100mb' }));
 // middleware
